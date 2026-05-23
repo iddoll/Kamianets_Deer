@@ -1,0 +1,11 @@
+{
+  "name": "Kamianets Deer",
+  "short_name": "Deer",
+  "description": "Інтерактивні ігри для дітей у Кам'янці-Подільському",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1f1a",
+  "theme_color": "#1a4d3e",
+  "orientation": "portrait",
+  "lang": "uk"
+}

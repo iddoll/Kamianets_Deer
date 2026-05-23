@@ -1,3 +1,14 @@
+# Web hub (Vite)
+node_modules/
+dist/
+*.local
+
+# Великі WebGL-білди — розкоментуйте, якщо не хочете комітити ігри в git:
+# public/builds/**/Build/
+# public/builds/**/*.wasm
+# public/builds/**/*.data
+# public/builds/**/*.br
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
