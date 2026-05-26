@@ -123,6 +123,12 @@ npm run preview
 4. Після push у `main` вкладка **Actions** → workflow **Deploy to GitHub Pages** (зелена галочка)
 5. Сайт: https://iddoll.github.io/Kamianets_Deer/
 
+**Тест геолокації на опублікованому сайті** (без поїздки в Кам’янець):
+
+https://iddoll.github.io/Kamianets_Deer/?test=1
+
+Там з’являться кнопки «Біля фортеці» / «Біля мосту».
+
 ### Якщо Actions падає з помилкою 403 (checkout)
 
 Це не код сайту, а права токена на GitHub:

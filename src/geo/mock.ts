@@ -1,5 +1,6 @@
 import type { Coordinates } from "./distance";
 import { GAME_ZONES } from "../config/locations";
+import { isGeoTestMode } from "./testMode";
 
 export const GEO_MOCK_STORAGE_KEY = "kamianets-deer-geo-mock";
 
@@ -21,7 +22,7 @@ export function getMockCoordinates(preset: GeoMockPreset): Coordinates | null {
 }
 
 export function readMockPreset(): GeoMockPreset {
-  if (!import.meta.env.DEV) return "off";
+  if (!isGeoTestMode()) return "off";
   const raw = localStorage.getItem(GEO_MOCK_STORAGE_KEY);
   if (raw === "fortress" || raw === "bridge" || raw === "far" || raw === "off") {
     return raw;

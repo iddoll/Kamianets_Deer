@@ -1,4 +1,5 @@
 import { formatDistance, useGeo } from "../context/GeoContext";
+import { isGeoTestMode } from "../geo/testMode";
 
 export default function GeoStatusBar() {
   const {
@@ -16,7 +17,7 @@ export default function GeoStatusBar() {
     return <p className="geo-status geo-status--loading">Визначаємо ваше місцезнаходження…</p>;
   }
 
-  if (insecureContext && !isMocked && import.meta.env.DEV) {
+  if (insecureContext && !isMocked && isGeoTestMode()) {
     return (
       <div className="geo-status geo-status--info">
         <p>
@@ -85,7 +86,7 @@ export function GeoLockMessage({
   const { insecureContext, isMocked } = useGeo();
 
   if (distanceM === null) {
-    if (insecureContext && !isMocked && import.meta.env.DEV) {
+    if (insecureContext && !isMocked && isGeoTestMode()) {
       return (
         <p className="game-card__geo">
           Оберіть «Біля фортеці» / «Біля мосту» у жовтому блоці <strong>Тест локації</strong> вище.

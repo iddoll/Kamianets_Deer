@@ -26,6 +26,7 @@ import {
   geolocationBlockedReason,
   isGeoInsecureContext,
 } from "../geo/permissions";
+import { isGeoTestMode } from "../geo/testMode";
 
 export type GameGeoStatus = {
   unlocked: boolean;
@@ -60,7 +61,7 @@ export function GeoProvider({ children }: { children: ReactNode }) {
   );
   const watchIdRef = useRef<number | null>(null);
 
-  const isMocked = import.meta.env.DEV && mockPreset !== "off";
+  const isMocked = isGeoTestMode() && mockPreset !== "off";
 
   const clearWatch = useCallback(() => {
     if (watchIdRef.current !== null) {
@@ -101,7 +102,7 @@ export function GeoProvider({ children }: { children: ReactNode }) {
   }, [clearWatch]);
 
   const requestGeolocation = useCallback(() => {
-    if (import.meta.env.DEV && mockPreset !== "off") {
+    if (isGeoTestMode() && mockPreset !== "off") {
       setCoords(getMockCoordinates(mockPreset));
       setNeedsPermission(false);
       setError(null);
@@ -193,7 +194,7 @@ export function GeoProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    if (import.meta.env.DEV && mockPreset !== "off") {
+    if (isGeoTestMode() && mockPreset !== "off") {
       setCoords(getMockCoordinates(mockPreset));
       setNeedsPermission(false);
       return;
