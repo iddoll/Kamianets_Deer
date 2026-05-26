@@ -111,6 +111,39 @@ npm run preview
 
 Папка `dist/` містить і hub, і `builds/` — можна викласти на будь-який статичний хостинг.
 
+## GitHub Pages
+
+Сайт буде за адресою: **https://iddoll.github.io/Kamianets_Deer/**
+
+### Перший раз (один раз у GitHub)
+
+1. Закомітьте і запуште код у `main` на https://github.com/iddoll/Kamianets_Deer
+2. На GitHub: **Settings → Pages**
+3. **Build and deployment → Source:** оберіть **GitHub Actions** (не «Deploy from branch»)
+4. Після push у `main` відкрийте вкладку **Actions** — workflow «Deploy to GitHub Pages» має стати зеленим
+5. Через 1–2 хв відкрийте https://iddoll.github.io/Kamianets_Deer/
+
+### Локальна перевірка перед пушем
+
+```bash
+npm run build:ghpages
+npm run preview
+```
+
+Відкрийте URL, який покаже `preview` (з префіксом `/Kamianets_Deer/`).
+
+### Плюси GitHub Pages для вас
+
+- **HTTPS** — на телефоні з **будь-якого Wi‑Fi / 4G** працює справжня геолокація (кнопка «Дозволити геолокацію»)
+- Не потрібен `npm run dev` і `192.168…`
+- WebGL-білди в `public/builds/` потрапляють у збірку автоматично
+
+### Оновлення сайту
+
+Кожен `git push` у гілку `main` перезбирає і публікує сайт.
+
+> Великі Unity-білди: GitHub обмежує розмір репозиторія; якщо білди дуже важкі, краще Git LFS або окремий хостинг для `.wasm` / `.data`.
+
 ## Unity → hub: завершення рівня
 
 ```javascript

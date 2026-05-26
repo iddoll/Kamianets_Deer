@@ -7,6 +7,7 @@
     "dev": "vite",
     "dev:https": "vite --mode https",
     "build": "tsc --noEmit && vite build",
+    "build:ghpages": "tsc --noEmit && vite build --mode ghpages",
     "preview": "vite preview"
   },
   "dependencies": {
