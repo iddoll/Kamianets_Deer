@@ -118,10 +118,19 @@ npm run preview
 ### Перший раз (один раз у GitHub)
 
 1. Закомітьте і запуште код у `main` на https://github.com/iddoll/Kamianets_Deer
-2. На GitHub: **Settings → Pages**
-3. **Build and deployment → Source:** оберіть **GitHub Actions** (не «Deploy from branch»)
-4. Після push у `main` відкрийте вкладку **Actions** — workflow «Deploy to GitHub Pages» має стати зеленим
-5. Через 1–2 хв відкрийте https://iddoll.github.io/Kamianets_Deer/
+2. **Settings → Actions → General** → блок **Workflow permissions** → увімкніть **Read and write permissions** → **Save**
+3. **Settings → Pages** → **Source:** **GitHub Actions** (не «Deploy from branch»)
+4. Після push у `main` вкладка **Actions** → workflow **Deploy to GitHub Pages** (зелена галочка)
+5. Сайт: https://iddoll.github.io/Kamianets_Deer/
+
+### Якщо Actions падає з помилкою 403 (checkout)
+
+Це не код сайту, а права токена на GitHub:
+
+1. **Settings → Actions → General → Workflow permissions** → **Read and write permissions**
+2. Перезапустіть workflow: **Actions** → останній запуск → **Re-run all jobs**
+
+Червоний **«pages build and deployment»** можна ігнорувати — це старий спосіб Pages; потрібен лише **Deploy to GitHub Pages**.
 
 ### Локальна перевірка перед пушем
 
