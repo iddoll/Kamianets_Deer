@@ -16,15 +16,15 @@ export type GameEntry = {
 export const GAMES: GameEntry[] = [
   {
     id: "game-1",
-    title: "Гра 1",
-    description: "Перша WebGL-гра — покладіть білд у public/builds/game-1/",
+    title: "Гра 1 — Фортеця",
+    description: "Відкривається біля фортеці (геозона на сайті, Unity не чіпаємо).",
     buildFolder: "game-1",
     emoji: "🏰",
   },
   {
     id: "game-2",
-    title: "Гра 2",
-    description: "Друга WebGL-гра — покладіть білд у public/builds/game-2/",
+    title: "Гра 2 — Старий міст",
+    description: "Відкривається біля старого мосту (окрема геозона).",
     buildFolder: "game-2",
     emoji: "🦌",
   },

@@ -1,10 +1,18 @@
+import basicSsl from "@vitejs/plugin-basic-ssl";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5173,
-    host: true,
-  },
+/** `npm run dev` — HTTP (працює на ПК і телефоні без попереджень).
+ *  `npm run dev:https` — HTTPS (лише для GPS на телефоні в локальній мережі). */
+export default defineConfig(({ mode }) => {
+  const useHttps = mode === "https";
+
+  return {
+    plugins: [react(), ...(useHttps ? [basicSsl()] : [])],
+    server: {
+      port: 5173,
+      host: true,
+      ...(useHttps ? { https: true } : {}),
+    },
+  };
 });

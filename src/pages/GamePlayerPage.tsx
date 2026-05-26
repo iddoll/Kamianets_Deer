@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { GeoLockMessage } from "../components/GeoStatusBar";
+import { formatDistance, useGeo } from "../context/GeoContext";
 import { getGameById, getGameIndexUrl } from "../config/games";
 
 type GameMessage = {
@@ -14,8 +16,11 @@ export default function GamePlayerPage() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [loaded, setLoaded] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const { getGameStatus, loading: geoLoading } = useGeo();
 
   const game = gameId ? getGameById(gameId) : undefined;
+  const geo = gameId ? getGameStatus(gameId) : null;
+  const unlocked = geo?.unlocked ?? false;
 
   const handleMessage = useCallback((event: MessageEvent<GameMessage>) => {
     const data = event.data;
@@ -32,18 +37,53 @@ export default function GamePlayerPage() {
   }, [handleMessage]);
 
   useEffect(() => {
+    if (!unlocked) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, []);
+  }, [unlocked]);
 
   if (!game) {
     return (
       <div className="page player-page">
         <p>Гру не знайдено.</p>
         <Link to="/">На головну</Link>
+      </div>
+    );
+  }
+
+  if (geoLoading) {
+    return (
+      <div className="page">
+        <p>Визначаємо позицію…</p>
+        <Link to="/">На головну</Link>
+      </div>
+    );
+  }
+
+  if (!unlocked && geo) {
+    return (
+      <div className="page geo-blocked-page">
+        <h1>Гра заблокована</h1>
+        <p>
+          «{game.title}» доступна лише біля <strong>{geo.zone.placeName}</strong>.
+        </p>
+        <GeoLockMessage
+          placeName={geo.zone.placeName}
+          distanceM={geo.distanceM}
+          radiusM={geo.zone.radiusM}
+        />
+        {geo.distanceM !== null && (
+          <p className="hint">
+            Відстань до точки: {formatDistance(geo.distanceM)} (потрібно ≤ {geo.zone.radiusM}{" "}
+            м)
+          </p>
+        )}
+        <Link className="btn btn-primary" to="/">
+          На головну
+        </Link>
       </div>
     );
   }
@@ -90,9 +130,7 @@ export default function GamePlayerPage() {
 
       <details className="player-hint">
         <summary>Для розробників Unity</summary>
-        <p>
-          Щоб повідомити hub про завершення, з WebGL викличте:
-        </p>
+        <p>Щоб повідомити hub про завершення, з WebGL викличте:</p>
         <pre>{`window.parent.postMessage(
   { type: "kamianets-deer", status: "completed", score: 100 },
   "*"

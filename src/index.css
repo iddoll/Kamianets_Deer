@@ -119,6 +119,24 @@ code {
   border-color: rgba(224, 122, 106, 0.25);
 }
 
+.game-card--unlocked {
+  border-color: rgba(232, 184, 74, 0.35);
+}
+
+.game-card__geo {
+  margin-top: 8px !important;
+  font-size: 0.8rem !important;
+  line-height: 1.4 !important;
+}
+
+.game-card__geo--locked {
+  color: var(--text-muted) !important;
+}
+
+.game-card__geo--open {
+  color: #8fd4a8 !important;
+}
+
 .game-card__emoji {
   font-size: 2rem;
   grid-row: span 2;
@@ -191,11 +209,150 @@ code {
   min-height: 44px;
 }
 
-.site-footer {
-  margin-top: 32px;
+/* Geo */
+.geo-status {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
   text-align: center;
+}
+
+.geo-status--loading {
+  color: var(--accent);
+}
+
+.geo-status--error p {
+  margin: 0 0 8px;
+  color: var(--danger);
+}
+
+.geo-status--info {
+  padding: 12px;
+  background: rgba(232, 184, 74, 0.12);
+  border: 1px solid rgba(232, 184, 74, 0.35);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.geo-status--info p {
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.geo-status__action {
+  color: var(--accent) !important;
+}
+
+.geo-status__details {
+  margin-top: 8px;
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.geo-status__details ol {
+  margin: 8px 0 0;
+  padding-left: 1.2rem;
+}
+
+.geo-status__details li {
+  margin-bottom: 4px;
+}
+
+.geo-status--prompt {
+  text-align: center;
+  padding: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+}
+
+.geo-status--prompt p {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.geo-status--prompt .btn {
+  width: 100%;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.geo-dev {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px dashed rgba(232, 184, 74, 0.35);
+}
+
+.geo-dev--prominent {
+  border: 2px solid var(--accent);
+  background: rgba(232, 184, 74, 0.08);
+  box-shadow: 0 0 0 1px rgba(232, 184, 74, 0.15);
+}
+
+.geo-dev h3 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+}
+
+.geo-dev__hint {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.geo-dev__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.geo-dev__coords {
+  margin: 10px 0 0;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.btn-small {
+  min-height: 40px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid transparent;
+}
+
+.btn-small--active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-compact {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.geo-blocked-page h1 {
+  font-size: 1.25rem;
+}
+
+.geo-blocked-page .btn {
+  margin-top: 16px;
+  display: flex;
+  width: 100%;
 }
 
 /* Player */
