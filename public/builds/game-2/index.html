@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | MathMaze</title>
+    <title>Unity Web Player | Puzzle</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">MathMaze</div>
+        <div id="unity-build-title">Puzzle</div>
       </div>
     </div>
     <script>
@@ -52,15 +52,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/MathMaze.loader.js";
+      var loaderUrl = buildUrl + "/game-2.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/MathMaze.data",
-        frameworkUrl: buildUrl + "/MathMaze.framework.js",
-        codeUrl: buildUrl + "/MathMaze.wasm",
+        dataUrl: buildUrl + "/game-2.data.br",
+        frameworkUrl: buildUrl + "/game-2.framework.js.br",
+        codeUrl: buildUrl + "/game-2.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "MathMaze",
+        productName: "Puzzle",
         productVersion: "1.0",
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
