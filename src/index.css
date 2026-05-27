@@ -364,6 +364,9 @@ code {
   background: #000;
   padding-top: var(--safe-top);
   padding-bottom: var(--safe-bottom);
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .player-bar {
@@ -391,11 +394,26 @@ code {
 }
 
 .game-frame {
-  flex: 1;
+  flex: 1 1 auto;
   width: 100%;
   min-height: 0;
+  height: 100%;
   border: none;
   background: #000;
+}
+
+@media (max-width: 480px) {
+  .player-bar {
+    padding: 4px 8px;
+  }
+
+  .player-bar__title {
+    font-size: 0.82rem;
+  }
+
+  .player-bar__spacer {
+    width: 56px;
+  }
 }
 
 .player-loading {
