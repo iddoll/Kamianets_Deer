@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prepare:unity": "node scripts/decompress-unity-builds.mjs public",
     "dev:https": "vite --mode https",
     "build": "tsc --noEmit && vite build",
-    "build:ghpages": "tsc --noEmit && vite build --mode ghpages",
+    "build:ghpages": "tsc --noEmit && vite build --mode ghpages && node scripts/decompress-unity-builds.mjs dist",
     "preview": "vite preview"
   },
   "dependencies": {

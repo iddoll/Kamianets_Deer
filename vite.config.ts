@@ -1,6 +1,7 @@
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { unityCompressedAssets } from "./vite-unity-compression";
 
 /** `npm run dev` — HTTP (працює на ПК і телефоні без попереджень).
  *  `npm run dev:https` — HTTPS (лише для GPS на телефоні в локальній мережі).
@@ -11,7 +12,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: isGhPages ? "/Kamianets_Deer/" : "/",
-    plugins: [react(), ...(useHttps ? [basicSsl()] : [])],
+    plugins: [react(), unityCompressedAssets(), ...(useHttps ? [basicSsl()] : [])],
     server: {
       port: 5173,
       host: true,
