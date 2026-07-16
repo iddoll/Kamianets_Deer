@@ -25,8 +25,8 @@ export default function GeoStatusBar() {
           нормально.
         </p>
         <p className="geo-status__action">
-          Натисніть у жовтому блоці нижче: <strong>«Біля фортеці»</strong> або{" "}
-          <strong>«Біля мосту»</strong> — ігри відкриються для тесту.
+          Натисніть у жовтому блоці нижче кнопку потрібної <strong>локації гри</strong> — ігри
+          відкриються для тесту.
         </p>
         <details className="geo-status__details">
           <summary>Справжній GPS на телефоні (https)</summary>
@@ -89,7 +89,7 @@ export function GeoLockMessage({
     if (insecureContext && !isMocked && isGeoTestMode()) {
       return (
         <p className="game-card__geo">
-          Оберіть «Біля фортеці» / «Біля мосту» у жовтому блоці <strong>Тест локації</strong> вище.
+          Оберіть локацію гри у жовтому блоці <strong>Тест локації</strong> вище.
         </p>
       );
     }

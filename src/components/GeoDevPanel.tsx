@@ -1,11 +1,14 @@
 import { useGeo } from "../context/GeoContext";
+import { GAME_ZONES } from "../config/locations";
 import type { GeoMockPreset } from "../geo/mock";
 import { isGeoTestMode } from "../geo/testMode";
 
 const PRESETS: { id: GeoMockPreset; label: string }[] = [
-  { id: "fortress", label: "📍 Біля фортеці → Гра 1" },
-  { id: "bridge", label: "📍 Біля мосту → Гра 2" },
-  { id: "far", label: "🚫 Далеко (обидві закриті)" },
+  ...GAME_ZONES.map((zone) => ({
+    id: zone.gameId,
+    label: `📍 ${zone.placeName}`,
+  })),
+  { id: "far", label: "🚫 Далеко (усі закриті)" },
   { id: "off", label: "Справжній GPS" },
 ];
 
@@ -25,7 +28,7 @@ export default function GeoDevPanel() {
       <h3>{insecureContext ? "Тест локації (натисніть тут)" : "Тест геолокації"}</h3>
       <p className="geo-dev__hint">
         {onLiveSite
-          ? "Режим тесту на GitHub Pages (?test=1). Симулює перебування біля фортеці / мосту."
+          ? "Режим тесту на GitHub Pages (?test=1). Симулює перебування біля кожної локації гри."
           : insecureContext
             ? "На http:// це єдиний спосіб перевірити ігри на телефоні без поїздки в Кам’янець."
             : "Або Chrome → F12 → Sensors → Location."}

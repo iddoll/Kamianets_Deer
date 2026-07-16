@@ -28,6 +28,13 @@ export const GAMES: GameEntry[] = [
     buildFolder: "game-2",
     emoji: "🦌",
   },
+  {
+    id: "game-3",
+    title: "Живий Камінь",
+    description: "Знайди гладкий камінь і відчини двері вежі.",
+    buildFolder: "game-3",
+    emoji: "🪨",
+  },
 ];
 
 export function getGameById(id: string): GameEntry | undefined {

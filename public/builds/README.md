@@ -11,14 +11,14 @@ public/builds/
     Build/              ← Unity
     TemplateData/
   game-2/
-    index.html
-    ...
+  game-3/
+  game-4/
 ```
 
 ## Unity WebGL
 
 1. **File → Build Settings → WebGL → Build**
-2. Скопіюйте **вміст** папки білду (не саму порожню папку з назвою проєкту) у `game-1` або `game-2`.
+2. Скопіюйте **вміст** папки білду (не саму порожню папку з назвою проєкту) у `game-1` … `game-4`.
 3. Переконайтесь, що в корені є `index.html`.
 4. **Не перезаписуйте** `index.html` і `TemplateData/style.css` з Unity — у репозиторії вони вже налаштовані під iframe сайту.
 5. Якщо білд стиснутий (`.br` / `.gz`), виконайте **`npm run prepare:unity`** — скрипт розпакує файли і оновить шляхи в `index.html`.
