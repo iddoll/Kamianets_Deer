@@ -42,6 +42,13 @@ export const GAMES: GameEntry[] = [
     buildFolder: "game-4",
     emoji: "🌑",
   },
+  {
+    id: "game-5",
+    title: "Фінальний Іспит Драко",
+    description: "Відкривається біля локації 5.",
+    buildFolder: "game-5",
+    emoji: "🐉",
+  },
 ];
 
 export function getGameById(id: string): GameEntry | undefined {

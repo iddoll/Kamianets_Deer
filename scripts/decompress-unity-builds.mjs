@@ -6,7 +6,7 @@ const root = process.argv[2] ?? "dist";
 const buildsRoot = join(root, "builds");
 const isPublicSource = root.replace(/\\/g, "/").endsWith("/public");
 
-for (const gameId of ["game-1", "game-2", "game-3", "game-4"]) {
+for (const gameId of ["game-1", "game-2", "game-3", "game-4", "game-5"]) {
   const buildDir = join(buildsRoot, gameId, "Build");
   const indexPath = join(buildsRoot, gameId, "index.html");
 

@@ -38,6 +38,12 @@ export const GAME_ZONES: GameZone[] = [
     center: { lat: 48.6710, lng: 26.5620 },
     radiusM: 70,
   },
+  {
+    gameId: "game-5",
+    placeName: "локація 5",
+    center: { lat: 48.6705, lng: 26.5635 },
+    radiusM: 70,
+  },
 ];
 
 export function getZoneForGame(gameId: string): GameZone | undefined {
