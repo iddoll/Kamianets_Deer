@@ -2,6 +2,6 @@
 
 WebGL-білд копіювати в:
 
-**`D:\GitHub\Kamianets_Deer\public\builds\game-3\`**
+**`D:\GitHub\Kamianets_Deer\public\builds\zhyvyy-kamin\`**
 
 Після білду: **`npm run prepare:unity`**

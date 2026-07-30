@@ -6,7 +6,7 @@ Unity-проєкт:
 
 WebGL-білд копіювати в:
 
-**`D:\GitHub\Kamianets_Deer\public\builds\game-2\`**
+**`D:\GitHub\Kamianets_Deer\public\builds\imya-geroya\`**
 
 ## Букви на кубиках (WebGL)
 

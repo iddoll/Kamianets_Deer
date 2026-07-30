@@ -1,12 +1,22 @@
 import { brotliDecompressSync, gunzipSync } from "node:zlib";
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.argv[2] ?? "dist";
 const buildsRoot = join(root, "builds");
-const isPublicSource = root.replace(/\\/g, "/").endsWith("/public");
 
-for (const gameId of ["game-1", "game-2", "game-3", "game-4", "game-5"]) {
+if (!existsSync(buildsRoot)) {
+  console.log(`No builds folder at ${buildsRoot}`);
+  process.exit(0);
+}
+
+/** All game folders under public/builds (or dist/builds), skipping non-directories. */
+const gameFolders = readdirSync(buildsRoot).filter((name) => {
+  const full = join(buildsRoot, name);
+  return statSync(full).isDirectory();
+});
+
+for (const gameId of gameFolders) {
   const buildDir = join(buildsRoot, gameId, "Build");
   const indexPath = join(buildsRoot, gameId, "index.html");
 
@@ -40,7 +50,5 @@ for (const gameId of ["game-1", "game-2", "game-3", "game-4", "game-5"]) {
   if (patched !== html) {
     writeFileSync(indexPath, patched);
     console.log(`patched ${gameId}/index.html`);
-  } else if (!isPublicSource) {
-    console.log(`patched ${gameId}/index.html for GitHub Pages`);
   }
 }

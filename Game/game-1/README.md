@@ -6,7 +6,7 @@ Unity-проєкт:
 
 WebGL-білд копіювати в:
 
-**`D:\GitHub\Kamianets_Deer\public\builds\game-1\`**
+**`D:\GitHub\Kamianets_Deer\public\builds\znayty-sered-kaminnya\`**
 
 ## Важливо для WebGL / сайту
 
@@ -17,4 +17,4 @@ WebGL-білд копіювати в:
 - портрет **1080×1920**;
 - `matchWebGLToCanvasSize: false` — UI рендериться у повній висоті, canvas масштабується під iframe.
 
-Після змін у Unity зроби новий WebGL-білд, скопіюй у `public/builds/game-1/`, потім **`npm run prepare:unity`** (розпакує `.br`/`.gz` для браузера).
+Після змін у Unity зроби новий WebGL-білд, скопіюй у `public/builds/znayty-sered-kaminnya/`, потім **`npm run prepare:unity`** (розпакує `.br`/`.gz` для браузера).

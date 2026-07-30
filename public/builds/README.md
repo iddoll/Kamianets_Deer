@@ -1,54 +1,30 @@
-# Папка WebGL-білдів
+# Папки WebGL-білдів
 
-Сюди кладуть **готові білди** з Unity (або іншого WebGL-експорту).
+Сюди кладіть **вміст** білду з Unity (або готовий WebGL-експорт).
 
 ## Структура
 
 ```
 public/builds/
-  game-1/
-    index.html          ← обов'язково
-    Build/              ← Unity
-    TemplateData/
-  game-2/
-  game-3/
-  game-4/
-  game-5/
+  znayty-sered-kaminnya/   ← Гра 1 — Знайти серед каміння
+  imya-geroya/             ← Гра 2 — Ім'я героя
+  zhyvyy-kamin/            ← Гра 3 — Живий камінь
+  labirynt-tiney/          ← Гра 4 — Лабіринт Тіней
+  finalnyy-ispyt-drako/    ← Гра 5 — Фінальний Іспит Драко
+  podatok-dlya-drakona/    ← Гра 6 — Податок для Дракона
+  voghnyani-ilyuziyi/      ← Гра 7 — Вогняні Ілюзії
+  sekretnyy-kodeks/        ← Гра 8 — Секретний Кодекс
+  drakonyache-hornylo/     ← Гра 9 — Драконяче Горнило
 ```
+
+У кожній папці має бути `index.html` (+ `Build/`, `TemplateData/` від Unity).
 
 ## Unity WebGL
 
 1. **File → Build Settings → WebGL → Build**
-2. Скопіюйте **вміст** папки білду (не саму порожню папку з назвою проєкту) у `game-1` … `game-5`.
+2. Скопіюйте **вміст** папки білду у відповідну папку вище.
 3. Переконайтесь, що в корені є `index.html`.
-4. **Не перезаписуйте** `index.html` і `TemplateData/style.css` з Unity — у репозиторії вони вже налаштовані під iframe сайту.
-5. Якщо білд стиснутий (`.br` / `.gz`), виконайте **`npm run prepare:unity`** — скрипт розпакує файли і оновить шляхи в `index.html`.
+4. **Не редагуйте** `index.html` і `TemplateData/style.css` з Unity — у них налаштований повний екран під iframe сайту.
+5. Якщо білд стиснутий (`.br` / `.gz`), запустіть **`npm run prepare:unity`**.
 
-## Налаштування в Unity (рекомендовано)
-
-- **Player → Resolution**: підтримка мобільних, орієнтація за потреби.
-- **Publishing Settings → Compression**: Gzip або Brotli — для `npm run dev` Vite віддає правильний `Content-Encoding`; для GitHub Pages білд автоматично розпаковує файли.
-- Якщо гра в iframe на іншому шляху — у білді шляхи зазвичай відносні, це ок.
-
-## Повідомити hub про завершення рівня
-
-З C# (через `Application.ExternalCall` або jslib):
-
-```csharp
-Application.ExternalEval(@"
-  if (window.parent !== window) {
-    window.parent.postMessage(
-      { type: 'kamianets-deer', status: 'completed', score: 100 },
-      '*'
-    );
-  }
-");
-```
-
-Або з JavaScript у WebGL template.
-
-## Перейменування ігор
-
-Список кнопок на головній сторінці: `src/config/games.ts`.
-
-Додати третю гру — новий запис у `GAMES` і папка `public/builds/game-3/`.
+Назви папок мають збігатися з `buildFolder` у `src/config/games.ts`.

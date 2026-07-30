@@ -6,7 +6,7 @@ Unity-проєкт:
 
 WebGL-білд копіювати в:
 
-**`D:\GitHub\Kamianets_Deer\public\builds\game-5\`**
+**`D:\GitHub\Kamianets_Deer\public\builds\finalnyy-ispyt-drako\`**
 
 Після білду: **`npm run prepare:unity`**
 
@@ -18,4 +18,4 @@ WebGL-білд копіювати в:
 
 У проєкті підключено **`Assets/Resources/Fonts/ArialBold.ttf`**; `WordPuzzleBootstrap.cs` завантажує його через `Resources.Load`.
 
-Після змін у Unity зроби новий WebGL-білд і скопіюй у `public/builds/game-5/`.
+Після змін у Unity зроби новий WebGL-білд і скопіюй у `public/builds/finalnyy-ispyt-drako/`.

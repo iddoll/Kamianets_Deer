@@ -35,8 +35,9 @@ npm run dev
 ## Куди класти ігри
 
 ```
-public/builds/game-1/   ← перший WebGL білд (index.html + Build/ + …)
-public/builds/game-2/   ← другий WebGL білд
+public/builds/znayty-sered-kaminnya/  ← Знайти серед каміння
+public/builds/imya-geroya/            ← Ім'я героя
+… (усі 9 папок — див. public/builds/README.md)
 ```
 
 Після копіювання білду перезапустіть dev-сервер або оновіть сторінку. Кнопка **«Грати»** з’явиться, коли знайдено `index.html`.
@@ -45,12 +46,7 @@ public/builds/game-2/   ← другий WebGL білд
 
 ## Геолокація (без змін Unity)
 
-Кожна гра прив’язана до зони в `src/config/locations.ts`:
-
-| Гра | Локація | Координати (орієнтовно) | Радіус |
-|-----|---------|-------------------------|--------|
-| game-1 | Фортеця | 48.6734, 26.5612 | 80 м |
-| game-2 | Старий міст | 48.6717, 26.5578 | 60 м |
+Кожна гра прив’язана до зони в `src/config/locations.ts` (9 локацій).
 
 Уточніть координати в Google Maps і змініть `center` / `radiusM`.
 

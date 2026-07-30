@@ -8,46 +8,72 @@ export type GameEntry = {
 };
 
 /**
- * Дві гри за замовчуванням — покладіть WebGL-білди у:
- *   public/builds/game-1/
- *   public/builds/game-2/
+ * Список ігор хабу. WebGL-білди кладіть у відповідну папку public/builds/.
  * (у кожній папці має бути index.html від Unity WebGL)
  */
 export const GAMES: GameEntry[] = [
   {
     id: "game-1",
-    title: "Гра 1 — Фортеця",
-    description: "Відкривається біля фортеці (геозона на сайті, Unity не чіпаємо).",
-    buildFolder: "game-1",
-    emoji: "🏰",
+    title: "Знайти серед каміння",
+    description: "Локація «Пошук предметів». Знайди потрібний предмет серед каміння.",
+    buildFolder: "znayty-sered-kaminnya",
+    emoji: "🪨",
   },
   {
     id: "game-2",
-    title: "Гра 2 — Старий міст",
-    description: "Відкривається біля старого мосту (окрема геозона).",
-    buildFolder: "game-2",
+    title: "Ім'я героя",
+    description: "Локація «Ім'я героя». Відкрий справжнє ім'я героя.",
+    buildFolder: "imya-geroya",
     emoji: "🦌",
   },
   {
     id: "game-3",
-    title: "Живий Камінь",
-    description: "Знайди гладкий камінь і відчини двері вежі.",
-    buildFolder: "game-3",
-    emoji: "🪨",
+    title: "Живий камінь",
+    description: "Локація «Живий камінь». Знайди гладкий камінь і відчини двері.",
+    buildFolder: "zhyvyy-kamin",
+    emoji: "💎",
   },
   {
     id: "game-4",
-    title: "Тіньовий лабіринт",
-    description: "Відкривається біля локації гри 4.",
-    buildFolder: "game-4",
+    title: "Лабіринт Тіней",
+    description: "Локація «Лабіринт Тіней». Пройди крізь тіні та світло.",
+    buildFolder: "labirynt-tiney",
     emoji: "🌑",
   },
   {
     id: "game-5",
     title: "Фінальний Іспит Драко",
-    description: "Відкривається біля локації 5.",
-    buildFolder: "game-5",
+    description: "Локація «Фінальний Іспит Драко». Склади слово та відкрий скриню.",
+    buildFolder: "finalnyy-ispyt-drako",
     emoji: "🐉",
+  },
+  {
+    id: "game-6",
+    title: "Податок для Дракона",
+    description: "Локація «Податок для Дракона». Відсортуй справжні монети від фальшивих.",
+    buildFolder: "podatok-dlya-drakona",
+    emoji: "🪙",
+  },
+  {
+    id: "game-7",
+    title: "Вогняні Ілюзії",
+    description: "Локація «Вогняні Ілюзії». Розкрий обман вогню та тіні.",
+    buildFolder: "voghnyani-ilyuziyi",
+    emoji: "🔥",
+  },
+  {
+    id: "game-8",
+    title: "Секретний Кодекс",
+    description: "Локація «Секретний Кодекс». Розшифруй прихований код.",
+    buildFolder: "sekretnyy-kodeks",
+    emoji: "📜",
+  },
+  {
+    id: "game-9",
+    title: "Драконяче Горнило",
+    description: "Локація «Драконяче Горнило». Витримай випробування горнила.",
+    buildFolder: "drakonyache-hornylo",
+    emoji: "⚒️",
   },
 ];
 
