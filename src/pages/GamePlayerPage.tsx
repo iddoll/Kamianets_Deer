@@ -3,38 +3,53 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { GeoLockMessage } from "../components/GeoStatusBar";
 import { formatDistance, useGeo } from "../context/GeoContext";
 import { getGameById, getGameIndexUrl } from "../config/games";
+import {
+  type GameHubMessage,
+  normalizeHubStatus,
+  saveGameResult,
+} from "../lib/gameHubMessage";
 
-type GameMessage = {
-  type?: string;
-  status?: string;
-  score?: number;
-};
+type Outcome = "win" | "loss" | null;
 
 export default function GamePlayerPage() {
   const { gameId } = useParams<{ gameId: string }>();
   const navigate = useNavigate();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [loaded, setLoaded] = useState(false);
-  const [completed, setCompleted] = useState(false);
+  const [outcome, setOutcome] = useState<Outcome>(null);
   const { getGameStatus, loading: geoLoading } = useGeo();
 
   const game = gameId ? getGameById(gameId) : undefined;
   const geo = gameId ? getGameStatus(gameId) : null;
   const unlocked = geo?.unlocked ?? false;
 
-  const handleMessage = useCallback((event: MessageEvent<GameMessage>) => {
-    const data = event.data;
-    if (!data || typeof data !== "object") return;
+  const handleMessage = useCallback(
+    (event: MessageEvent<GameHubMessage>) => {
+      const data = event.data;
+      if (!data || typeof data !== "object" || data.type !== "kamianets-deer") return;
+      if (gameId && data.gameId && data.gameId !== gameId) return;
 
-    if (data.type === "kamianets-deer" && data.status === "completed") {
-      setCompleted(true);
-    }
-  }, []);
+      const normalized = normalizeHubStatus(data.status);
+      if (!normalized || !gameId) return;
+
+      setOutcome(normalized);
+      saveGameResult(gameId, {
+        status: normalized,
+        score: data.score,
+        at: Date.now(),
+      });
+    },
+    [gameId]
+  );
 
   useEffect(() => {
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, [handleMessage]);
+
+  useEffect(() => {
+    setOutcome(null);
+  }, [gameId]);
 
   useEffect(() => {
     if (!unlocked) return;
@@ -122,17 +137,28 @@ export default function GamePlayerPage() {
         onLoad={() => setLoaded(true)}
       />
 
-      {completed && (
-        <div className="player-toast" role="status">
-          Завдання виконано!
+      {outcome === "win" && (
+        <div className="player-toast player-toast--win" role="status">
+          Ви виграли!
+        </div>
+      )}
+
+      {outcome === "loss" && (
+        <div className="player-toast player-toast--loss" role="status">
+          Ви програли. Спробуйте ще раз.
         </div>
       )}
 
       <details className="player-hint">
         <summary>Для розробників Unity</summary>
-        <p>Щоб повідомити hub про завершення, з WebGL викличте:</p>
+        <p>З WebGL надішліть результат батьківській сторінці:</p>
         <pre>{`window.parent.postMessage(
-  { type: "kamianets-deer", status: "completed", score: 100 },
+  { type: "kamianets-deer", status: "win", score: 100 },
+  "*"
+);
+
+window.parent.postMessage(
+  { type: "kamianets-deer", status: "loss", score: 0 },
   "*"
 );`}</pre>
       </details>
