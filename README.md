@@ -155,11 +155,31 @@ npm run preview
 
 > Великі Unity-білди: GitHub обмежує розмір репозиторія; якщо білди дуже важкі, краще Git LFS або окремий хостинг для `.wasm` / `.data`.
 
-## Unity → hub: завершення рівня
+## Unity → hub: результат гри (виграв / програв)
+
+Гра в iframe надсилає повідомлення батьківській сторінці:
 
 ```javascript
+// Виграв
 window.parent.postMessage(
-  { type: "kamianets-deer", status: "completed", score: 100 },
+  { type: "kamianets-deer", status: "win", score: 100 },
+  "*"
+);
+
+// Програв
+window.parent.postMessage(
+  { type: "kamianets-deer", status: "loss", score: 0 },
   "*"
 );
 ```
+
+У Unity-проєктах уже є `Assets/Plugins/WebGL/KamianetsDeerHub.jslib` і `Assets/Scripts/KamianetsDeerHub.cs`:
+
+```csharp
+KamianetsDeerHub.NotifyWin(100);
+KamianetsDeerHub.NotifyLoss();
+```
+
+Після змін у Unity — новий WebGL-білд у `public/builds/…` (перезбірка потрібна один раз на гру).
+
+Старий статус `"completed"` теж вважається перемогою.
