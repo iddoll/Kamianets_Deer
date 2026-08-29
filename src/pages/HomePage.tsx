@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import GeoDevPanel from "../components/GeoDevPanel";
 import GeoStatusBar, { GeoLockMessage } from "../components/GeoStatusBar";
 import { useGeo } from "../context/GeoContext";
-import { GAMES } from "../config/games";
+import { formatTowerLabel, GAMES } from "../config/games";
 import { useBuildStatus } from "../hooks/useBuildStatus";
 
 export default function HomePage() {
@@ -25,7 +25,7 @@ export default function HomePage() {
       <GeoStatusBar />
 
       <section className="games-section" aria-labelledby="games-heading">
-        <h2 id="games-heading">Ігри</h2>
+        <h2 id="games-heading">Вежі фортеці</h2>
         {checking && <p className="hint">Перевіряємо наявність білдів…</p>}
 
         <ul className="game-list">
@@ -35,7 +35,13 @@ export default function HomePage() {
             const unlocked = geo?.unlocked ?? false;
 
             let action: ReactNode;
-            if (!isReady && !checking) {
+            if (game.placeholder) {
+              action = (
+                <span className="btn btn-disabled" aria-disabled>
+                  Незабаром
+                </span>
+              );
+            } else if (!isReady && !checking) {
               action = (
                 <span className="btn btn-disabled" aria-disabled>
                   Немає білду
@@ -64,27 +70,28 @@ export default function HomePage() {
             return (
               <li key={game.id}>
                 <article
-                  className={`game-card ${isReady && unlocked ? "game-card--unlocked" : ""} ${!isReady ? "game-card--missing" : ""}`}
+                  className={`game-card ${isReady && unlocked ? "game-card--unlocked" : ""} ${!isReady && !game.placeholder ? "game-card--missing" : ""} ${game.placeholder ? "game-card--placeholder" : ""}`}
                 >
                   <span className="game-card__emoji" aria-hidden>
                     {game.emoji}
                   </span>
                   <div className="game-card__body">
+                    <p className="game-card__tower">{formatTowerLabel(game)}</p>
                     <h3>{game.title}</h3>
                     <p>{game.description}</p>
-                    {geo && !unlocked && (
+                    {!game.placeholder && geo && !unlocked && (
                       <GeoLockMessage
                         placeName={geo.zone.placeName}
                         distanceM={geo.distanceM}
                         radiusM={geo.zone.radiusM}
                       />
                     )}
-                    {geo && unlocked && (
+                    {!game.placeholder && geo && unlocked && (
                       <p className="game-card__geo game-card__geo--open">
                         ✓ Ви біля «{geo.zone.placeName}» — можна грати
                       </p>
                     )}
-                    {!isReady && !checking && (
+                    {!game.placeholder && !isReady && !checking && (
                       <p className="game-card__warn">
                         Білд не знайдено. Додайте{" "}
                         <code>public/builds/{game.buildFolder}/index.html</code>

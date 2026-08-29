@@ -119,6 +119,21 @@ code {
   border-color: rgba(224, 122, 106, 0.25);
 }
 
+.game-card--placeholder {
+  opacity: 0.78;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.game-card__tower {
+  margin: 0 0 2px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+}
+
 .game-card--unlocked {
   border-color: rgba(232, 184, 74, 0.35);
 }
@@ -313,8 +328,8 @@ code {
 }
 
 .geo-dev__buttons {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 6px;
 }
 
@@ -326,9 +341,10 @@ code {
 }
 
 .btn-small {
-  min-height: 40px;
-  padding: 8px 12px;
-  font-size: 0.85rem;
+  min-height: 36px;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  line-height: 1.2;
   background: var(--bg-elevated);
   color: var(--text);
   border: 1px solid transparent;

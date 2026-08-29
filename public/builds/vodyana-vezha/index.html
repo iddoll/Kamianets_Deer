@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | Living stone</title>
+    <title>Unity Web Player | Секретний Водопровід</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Living stone</div>
+        <div id="unity-build-title">Секретний Водопровід</div>
       </div>
     </div>
     <script>
@@ -66,16 +66,15 @@
       }
 
       var buildUrl = "Build";
-      // Encode spaces in Unity product-name filenames
-      var loaderUrl = buildUrl + "/" + encodeURIComponent("Living stone.loader.js");
+      var loaderUrl = buildUrl + "/smotrych_aqueduct.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/" + encodeURIComponent("Living stone.data"),
-        frameworkUrl: buildUrl + "/" + encodeURIComponent("Living stone.framework.js"),
-        codeUrl: buildUrl + "/" + encodeURIComponent("Living stone.wasm"),
+        dataUrl: buildUrl + "/smotrych_aqueduct.data.br",
+        frameworkUrl: buildUrl + "/smotrych_aqueduct.framework.js.br",
+        codeUrl: buildUrl + "/smotrych_aqueduct.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Living stone",
+        productName: "Секретний Водопровід",
         productVersion: "1.0",
         showBanner: unityShowBanner,
         matchWebGLToCanvasSize: false,
