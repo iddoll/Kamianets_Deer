@@ -15,6 +15,7 @@ public/builds/
   voghnyani-ilyuziyi/      ← Гра 7 — Вогняні Ілюзії
   sekretnyy-kodeks/        ← Гра 8 — Секретний Кодекс
   drakonyache-hornylo/     ← Гра 9 — Драконяче Горнило
+  vodyana-vezha/           ← Гра 10 — Секретний Водопровід
 ```
 
 У кожній папці має бути `index.html` (+ `Build/`, `TemplateData/` від Unity).

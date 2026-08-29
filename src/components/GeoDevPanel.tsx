@@ -1,5 +1,5 @@
 import { useGeo } from "../context/GeoContext";
-import { formatTowerLabel, getGameById } from "../config/games";
+import { getGameById } from "../config/games";
 import { GAME_ZONES } from "../config/locations";
 import type { GeoMockPreset } from "../geo/mock";
 import { isGeoTestMode } from "../geo/testMode";
@@ -8,7 +8,7 @@ const PRESETS: { id: GeoMockPreset; label: string }[] = [
   ...GAME_ZONES.map((zone) => {
     const game = getGameById(zone.gameId);
     const label = game
-      ? `📍 ${formatTowerLabel(game)}${game.placeholder ? "" : ` — ${game.title}`}`
+      ? `📍 ${game.towerNumber}. ${game.placeholder ? game.towerName : game.title}`
       : `📍 ${zone.placeName}`;
     return { id: zone.gameId, label };
   }),

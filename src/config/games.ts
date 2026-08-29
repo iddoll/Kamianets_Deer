@@ -81,7 +81,6 @@ export const GAMES: GameEntry[] = [
     towerName: "Водяна",
     buildFolder: "vodyana-vezha",
     emoji: "💧",
-    placeholder: true,
   },
   {
     id: "game-9",

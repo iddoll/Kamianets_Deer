@@ -328,8 +328,8 @@ code {
 }
 
 .geo-dev__buttons {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 6px;
 }
 
@@ -341,9 +341,10 @@ code {
 }
 
 .btn-small {
-  min-height: 40px;
-  padding: 8px 12px;
-  font-size: 0.85rem;
+  min-height: 36px;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  line-height: 1.2;
   background: var(--bg-elevated);
   color: var(--text);
   border: 1px solid transparent;
