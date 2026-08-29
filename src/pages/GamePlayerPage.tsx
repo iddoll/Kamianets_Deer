@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { GeoLockMessage } from "../components/GeoStatusBar";
 import { formatDistance, useGeo } from "../context/GeoContext";
-import { getGameById, getGameIndexUrl } from "../config/games";
+import { formatTowerLabel, getGameById, getGameIndexUrl } from "../config/games";
 import {
   type GameHubMessage,
   normalizeHubStatus,
@@ -69,6 +69,18 @@ export default function GamePlayerPage() {
     );
   }
 
+  if (game.placeholder) {
+    return (
+      <div className="page geo-blocked-page">
+        <h1>{formatTowerLabel(game)}</h1>
+        <p>Гра на цій вежі з'явиться незабаром.</p>
+        <Link className="btn btn-primary" to="/">
+          На головну
+        </Link>
+      </div>
+    );
+  }
+
   if (geoLoading) {
     return (
       <div className="page">
@@ -116,7 +128,9 @@ export default function GamePlayerPage() {
         >
           ← Назад
         </button>
-        <span className="player-bar__title">{game.title}</span>
+        <span className="player-bar__title">
+          {formatTowerLabel(game)} — {game.title}
+        </span>
         <span className="player-bar__spacer" />
       </header>
 

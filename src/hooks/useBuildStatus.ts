@@ -14,6 +14,7 @@ export function useBuildStatus(): { ready: ReadyMap; checking: boolean } {
       const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       const entries = await Promise.all(
         GAMES.map(async (game) => {
+          if (game.placeholder) return [game.id, false] as const;
           const url = `${base}/builds/${game.buildFolder}/index.html`;
           try {
             const res = await fetch(url, { method: "HEAD" });
