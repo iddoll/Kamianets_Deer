@@ -111,13 +111,12 @@ export const GAMES: GameEntry[] = [
   },
   {
     id: "game-11",
-    title: "Денна вежа",
-    description: "Гра з'явиться незабаром.",
+    title: "Сонячний Кристал",
+    description: "Піймай спалах, розбий камені рогаткою і докоти кулю до чаші.",
     towerNumber: 10,
     towerName: "Денна",
     buildFolder: "denna-vezha",
-    emoji: "🏰",
-    placeholder: true,
+    emoji: "☀️",
   },
   {
     id: "game-12",

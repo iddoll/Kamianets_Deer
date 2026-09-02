@@ -3,6 +3,9 @@ node_modules/
 dist/
 *.local
 
+# Unity WebGL debug dump (must not ship)
+**/*BurstDebugInformation_DoNotShip/
+
 # Великі WebGL-білди — розкоментуйте, якщо не хочете комітити ігри в git:
 # public/builds/**/Build/
 # public/builds/**/*.wasm
