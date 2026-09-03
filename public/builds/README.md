@@ -17,7 +17,7 @@ public/builds/
   drakonyache-hornylo/     ← Гра 9 — Драконяче Горнило
   vodyana-vezha/           ← Вежа 6 — Секретний Водопровід
   denna-vezha/             ← Вежа 10 — Сонячний Кристал
-  nova-zahidna-vezha/      ← Вежа 11 — (ще немає білду)
+  nova-zahidna-vezha/      ← Вежа 11 — Непробивний Бастіон
 ```
 
 У кожній папці має бути `index.html` (+ `Build/`, `TemplateData/` від Unity).

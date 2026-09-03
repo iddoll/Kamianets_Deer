@@ -120,13 +120,12 @@ export const GAMES: GameEntry[] = [
   },
   {
     id: "game-12",
-    title: "Нова Західна вежа",
-    description: "Гра з'явиться незабаром.",
+    title: "Непробивний Бастіон",
+    description: "Вирий рів, намалюй фальш-стіну і відбий ядра щитом.",
     towerNumber: 11,
     towerName: "Нова Західна (Західна)",
     buildFolder: "nova-zahidna-vezha",
-    emoji: "🏰",
-    placeholder: true,
+    emoji: "🛡️",
   },
 ];
 
