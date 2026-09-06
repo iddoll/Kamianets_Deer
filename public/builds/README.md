@@ -15,7 +15,9 @@ public/builds/
   voghnyani-ilyuziyi/      ← Гра 7 — Вогняні Ілюзії
   sekretnyy-kodeks/        ← Гра 8 — Секретний Кодекс
   drakonyache-hornylo/     ← Гра 9 — Драконяче Горнило
-  vodyana-vezha/           ← Гра 10 — Секретний Водопровід
+  vodyana-vezha/           ← Вежа 6 — Секретний Водопровід
+  denna-vezha/             ← Вежа 10 — Сонячний Кристал
+  nova-zahidna-vezha/      ← Вежа 11 — Непробивний Бастіон
 ```
 
 У кожній папці має бути `index.html` (+ `Build/`, `TemplateData/` від Unity).
